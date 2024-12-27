@@ -1,7 +1,7 @@
 from typing import Dict, List
 
 import numpy as np
-from scipy.integrate import trapz
+from scipy.integrate import trapezoid
 from scipy.interpolate import InterpolatedUnivariateSpline, interp1d
 
 """
@@ -457,10 +457,10 @@ def convolved_spectrum_fn(
                 """
                 spec_res_fn_vals = spec_res_fn(es_padded, e, energy_res)
                 integrand_vals = (
-                    dnde_src * spec_res_fn_vals / trapz(spec_res_fn_vals, es_padded)
+                    dnde_src * spec_res_fn_vals / trapezoid(spec_res_fn_vals, es_padded)
                 )
 
-                return trapz(integrand_vals, es_padded)
+                return trapezoid(integrand_vals, es_padded)
 
             dnde_conv += np.vectorize(integral)(es)
 

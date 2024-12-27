@@ -8,7 +8,7 @@ from warnings import warn
 
 import numpy as np
 
-from hazma.spectra._photon import (
+from . import (
     _muon,
     _pion,
     _rho,
